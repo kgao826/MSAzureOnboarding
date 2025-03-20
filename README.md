@@ -132,7 +132,7 @@ Write-Output "Disconnected"
 
 4. The connection with Exchange Online is then disconnected
 
-###Litigation Hold
+### Litigation Hold
 In the script, litigation hold is applied to the user mailbox. Below shows how Microsoft handles litigation holds.
 
 <IMG  src="https://learn.microsoft.com/en-us/exchange/exchangeserver/media/itpro_recoverableitems.gif?view=exchserver-2019"  alt="Recoverable Items folder."/>
