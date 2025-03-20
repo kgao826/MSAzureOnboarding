@@ -1,10 +1,10 @@
 # MSAzureOnboarding
 Automated Process for Onboarding Employees to a company in an Azure Environment
 
-#Resources
+# Resources
 ![image.png](/.attachments/image-2b9e4fe5-eec6-4154-ba79-d479bf43fefc.png)
 
-#Main Flow
+# Main Flow
 ![image.png](/.attachments/image-ad4ae86c-7745-4ffa-9391-5363703baa51.png)
 
 The features of this new process:
@@ -19,7 +19,7 @@ The features of this new process:
 - Automatically adds location properties based on office location so that email signatures appear more professional
 - Automatically assigns Usage Location in Entra ID based on office location to ensure better security detections for Microsoft Sentinel
 
-#SharePoint Form
+# SharePoint Form
 
 ![image.png](/.attachments/image-bdb3e783-0fc2-47f7-9c3e-f98f525100de.png)
 
@@ -55,7 +55,7 @@ You can drag the fields around in the list to rearrange them, try not to break t
 
 Once completed, make sure to **publish** the change.
 
-#SharePoint Form Logic App
+# SharePoint Form Logic App
 The logic app checks every 10 minutes for updated to the SharePoint form and runs the logic flow. 
 
 1. The approver and HR will receive an email where they can click approve or reject the onboarding request. If rejected, the flow will terminate, only one person needs to select the option. HR is informed they only need to select the option if the manager is on leave.
@@ -84,7 +84,7 @@ This is because, if the condition does not match for User Creation Fails, it wil
 
 8. Runs the **aa-onboardingPS** runbook for the Powershell script.
 
-##Assigned Roles
+## Assigned Roles
 |Role Name| Env | ID |
 |--|--|--|
 | Lifecycle Workflows Administrator | RBAC |  |
@@ -93,12 +93,12 @@ This is because, if the condition does not match for User Creation Fails, it wil
 | Directory Reader | RBAC |  |
 | Directory.Read.All | MS Graph (00000003-0000-0000-c000-000000000000) | 7ab1d382-f21e-4acd-a863-ba3e13f7da61 |
 
-##Alerts
+## Alerts
 The alert rule to monitor if there were any failures will send an email.
 
-#Automation Account Runbook (PowerShell)
+# Automation Account Runbook (PowerShell)
 
-##PowerShell Script
+## PowerShell Script
 
 Currently the PowerShell script turn on email litigation for an indefinite period of time. Scripts can be added here for the future.
 
@@ -137,17 +137,17 @@ In the script, litigation hold is applied to the user mailbox. Below shows how M
 
 <IMG  src="https://learn.microsoft.com/en-us/exchange/exchangeserver/media/itpro_recoverableitems.gif?view=exchserver-2019"  alt="Recoverable Items folder."/>
 
-##Assigned Roles
+## Assigned Roles
 |Role Name| Env | ID |
 |--|--|--|
 | Exchange.ManageAsApp | Exchange (00000002-0000-0ff1-ce00-000000000000)| 7ab1d382-f21e-4acd-a863-ba3e13f7da61 |
 | Exchange Administrator | RBAC |  |
 
-###PowerShell Runbooks
+### PowerShell Runbooks
 The following modules must be imported for the PowerShell to run properly:
 - ExchangeOnlineManagement
 - PackageManagement
 - PowerShellGet
 
-##Alerts
+## Alerts
 The alert rule to monitor if there were any failures is called **aa-aue-prod-onboardingPS runbook has failed**. This will send an email to JIRA.
